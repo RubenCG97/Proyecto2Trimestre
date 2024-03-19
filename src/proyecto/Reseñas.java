@@ -1,17 +1,20 @@
 package proyecto;
 
 public class Reseñas {
-	
+
 	private Publicaciones publicacion;
 	private Usuarios usuario;
 	private String opinion;
-	enum PUNTUACION{
-		UNO,DOS,TRES,CUATRO,CINCO
+
+	enum PUNTUACION {
+		UNO, DOS, TRES, CUATRO, CINCO
 	}
+
 	private PUNTUACION puntuacion;
-	
-	public Reseñas() {}
-	
+
+	public Reseñas() {
+	}
+
 	public Reseñas(Publicaciones publicacion, Usuarios usuario, String opinion, PUNTUACION puntuacion) {
 		super();
 		this.publicacion = publicacion;
@@ -57,9 +60,5 @@ public class Reseñas {
 		return "Reseñas [publicacion=" + publicacion + ", usuario=" + usuario + ", opinion=" + opinion + ", puntuacion="
 				+ puntuacion + "]";
 	}
-
-	
-	
-	
 
 }

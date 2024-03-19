@@ -1,5 +1,7 @@
 package proyecto;
 
+import java.util.Scanner;
+
 public abstract class Publicaciones {
 
 	protected int ISBN;
@@ -8,25 +10,19 @@ public abstract class Publicaciones {
 	protected String descripcion;
 	protected String editorial;
 	protected int numPag;
-	protected int numPagLeidas;
 
-	enum GENERO{
-		NOVELACOMTEPORANEA,POESIA,CC_Y_FANTASIA,MISTERIO_Y_TRHILLER,LITERATURAJUVENIL,NOFICCION,TERROR,ROMANCE,CLASICOSLITERARIOS,
-		CUENTOSCORTOS
+	enum GENERO {
+		NOVELACOMTEPORANEA, POESIA, CC_Y_FANTASIA, MISTERIO_Y_TRHILLER, LITERATURAJUVENIL, NOFICCION, TERROR, ROMANCE,
+		CLASICOSLITERARIOS, CUENTOSCORTOS
 	}
+
 	protected GENERO genero;
-	protected GENERO subgenero;
-	enum ESTADO{
-		NOLEIDO,ENPROCESO,TERMINADO
+
+	public Publicaciones() {
 	}
-	protected ESTADO estado;
-	protected String idioma;
-
-
-	public Publicaciones() {}
 
 	public Publicaciones(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
-			GENERO genero, GENERO subgenero, ESTADO estado, String idioma) {
+			GENERO genero) {
 		super();
 		ISBN = iSBN;
 		this.titulo = titulo;
@@ -34,11 +30,7 @@ public abstract class Publicaciones {
 		this.descripcion = descripcion;
 		this.editorial = editorial;
 		this.numPag = numPag;
-		this.numPagLeidas = 0;
 		this.genero = genero;
-		this.subgenero = subgenero;
-		this.estado = estado;
-		this.idioma = idioma;
 	}
 
 	public int getISBN() {
@@ -97,35 +89,25 @@ public abstract class Publicaciones {
 		this.genero = genero;
 	}
 
-	public GENERO getSubgenero() {
-		return subgenero;
-	}
-
-	public void setSubgenero(GENERO subgenero) {
-		this.subgenero = subgenero;
-	}
-
-	public ESTADO getEstado() {
-		return estado;
-	}
-
-	public void setEstado(ESTADO estado) {
-		this.estado = estado;
-	}
-	
-	public String getIdioma() {
-		return idioma;
-	}
-
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
-
 	@Override
 	public String toString() {
 		return "Publicaciones [ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", descripcion="
-				+ descripcion + ", editorial=" + editorial + ", numPag=" + numPag + ", genero=" + genero
-				+ ", subgenero=" + subgenero + ", estado=" + estado + ", idioma=" + idioma + "]";
+				+ descripcion + ", editorial=" + editorial + ", numPag=" + numPag + ", genero=" + genero + "]";
+	}
+
+	public Publicaciones CrearPublicacion(Publicaciones[] listaPublicaciones, Autores[] listaAutores) {
+		return null;
+		
+	}
+
+	public Publicaciones ModificarPublicacion(Publicaciones publivacion ,Autores[] listaAutores, Publicaciones[] listaPublicaciones) {
+		
+		return null;
+	}
+	public Publicaciones BorrarPublicacion(Publicaciones publicacion, Publicaciones[] listaPublicaciones) {
+
+		return null;
+
 	}
 	
 	

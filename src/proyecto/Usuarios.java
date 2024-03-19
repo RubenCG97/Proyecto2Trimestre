@@ -272,23 +272,23 @@ public class Usuarios {
 		return usuario;
 
 	}
-	
-	public Usuarios BorrarUsuario(Usuarios usuario,Usuarios[] listaUsuarios) {
-		
-		usuario=null;
+
+	public Usuarios BorrarUsuario(Usuarios usuario, Usuarios[] listaUsuarios) {
+
+		usuario = null;
 		return usuario;
-		
+
 	}
-	
-	public void ListarUsuarios(Usuarios[]listaUsuarios) {
-		int contador=0;
-		for(int i=0;i<listaUsuarios.length;i++) {
-			if(listaUsuarios[i]!=null) {
+
+	public void ListarUsuarios(Usuarios[] listaUsuarios) {
+		int contador = 0;
+		for (int i = 0; i < listaUsuarios.length; i++) {
+			if (listaUsuarios[i] != null) {
 				System.out.println(listaUsuarios[i]);
 				contador++;
 			}
 		}
-		if(contador==0) {
+		if (contador == 0) {
 			System.out.println("No hay usuarios");
 		}
 	}

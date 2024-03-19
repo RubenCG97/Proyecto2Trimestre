@@ -2,24 +2,28 @@ package proyecto;
 
 public class Suscripciones {
 
-	enum TIPO{
-		INDIVIDUAL,DUO,FAMILIAR;
+	enum TIPO {
+		INDIVIDUAL, DUO, FAMILIAR;
 	}
+
 	private TIPO tipo;
-	enum CUOTA{
-		MENSUAL,ANUAL;
+
+	enum CUOTA {
+		MENSUAL, ANUAL;
 	}
+
 	private CUOTA cuota;
-	
+
 	private double precio;
-	
-	public Suscripciones() {}
+
+	public Suscripciones() {
+	}
 
 	public Suscripciones(TIPO tipo, CUOTA cuota) {
 		this.tipo = tipo;
 		this.cuota = cuota;
 		this.precio = CalculoPrecio();
-		
+
 	}
 
 	public TIPO getTipo() {
@@ -42,35 +46,28 @@ public class Suscripciones {
 		return CalculoPrecio();
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Suscripciones [tipo=" + tipo + ", cuota=" + cuota + ", precio=" + precio + "]";
 	}
-	
-	private  double CalculoPrecio() {
-		
+
+	private double CalculoPrecio() {
+
 		if (this.tipo == TIPO.INDIVIDUAL && this.cuota == CUOTA.MENSUAL) {
-		    this.precio = 8.99;
+			this.precio = 8.99;
 		} else if (this.tipo == TIPO.INDIVIDUAL && this.cuota == CUOTA.ANUAL) {
-		    this.precio = 89.99;
+			this.precio = 89.99;
 		} else if (this.tipo == TIPO.DUO && this.cuota == CUOTA.MENSUAL) {
-		    this.precio = 14.99;
+			this.precio = 14.99;
 		} else if (this.tipo == TIPO.DUO && this.cuota == CUOTA.ANUAL) {
-		    this.precio = 169.99;
+			this.precio = 169.99;
 		} else if (this.tipo == TIPO.FAMILIAR && this.cuota == CUOTA.MENSUAL) {
-		    this.precio = 17.99;
-		} else{
-		    this.precio = 199.99;
+			this.precio = 17.99;
+		} else {
+			this.precio = 199.99;
 		}
-		
+
 		return this.precio;
 	}
-	
-	
-	
-	
-	
-	
+
 }

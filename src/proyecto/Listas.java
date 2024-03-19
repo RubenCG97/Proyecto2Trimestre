@@ -4,12 +4,13 @@ import java.util.Arrays;
 
 public class Listas {
 
-	private Publicaciones [] publicaciones;
+	private Publicaciones[] publicaciones;
 	private Usuarios usuario;
 	private String nombre;
-	
-	public Listas() {}
-	
+
+	public Listas() {
+	}
+
 	public Listas(Publicaciones[] publicaciones, Usuarios usuario, String nombre) {
 		this.publicaciones = publicaciones;
 		this.usuario = usuario;
@@ -45,8 +46,5 @@ public class Listas {
 		return "Listas [publicaciones=" + Arrays.toString(publicaciones) + ", usuario=" + usuario + ", nombre=" + nombre
 				+ "]";
 	}
-	
-	
-	
-	
+
 }
