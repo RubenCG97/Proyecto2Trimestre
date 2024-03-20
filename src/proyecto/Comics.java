@@ -18,7 +18,7 @@ public class Comics extends Publicaciones {
 	}
 
 	public Comics(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
-			GENERO genero, GENERO subgenero,COLOR color) {
+			GENERO genero,COLOR color) {
 		super(iSBN, titulo, autor, descripcion, editorial, numPag, genero);
 		this.color=color;
 		// TODO Auto-generated constructor stub
@@ -307,6 +307,7 @@ public class Comics extends Publicaciones {
 	public Comics BorrarPublicacion(Comics comic, Publicaciones[] listaPublicaciones) {
 
 		comic = null;
+		System.out.println("Borrado");
 		return comic;
 
 	}

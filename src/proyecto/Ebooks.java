@@ -272,6 +272,7 @@ public class Ebooks extends Publicaciones {
 	public Ebooks BorrarPublicacion(Ebooks ebook, Publicaciones[] listaPublicaciones) {
 
 		ebook = null;
+		System.out.println("Borrado");
 		return ebook;
 
 	}

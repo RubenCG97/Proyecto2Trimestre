@@ -1,7 +1,12 @@
 
 package proyecto;
 
+import java.util.Arrays;
 import java.util.Scanner;
+
+import proyecto.Publicaciones.GENERO;
+import proyecto.Suscripciones.CUOTA;
+import proyecto.Suscripciones.TIPO;
 
 public class APP {
 
@@ -9,8 +14,29 @@ public class APP {
 		var sc = new Scanner(System.in);
 
 		Usuarios[] listaUsuarios = new Usuarios[100];
+		listaUsuarios[0] = new Usuarios("user1", "password1", "John", "Doe", "john.doe@example.com", "1234567890", 30, "USA", new Suscripciones(TIPO.INDIVIDUAL, CUOTA.MENSUAL));
+		listaUsuarios[1]= new Usuarios("user2", "password2", "Alice", "Smith", "alice.smith@example.com", "0987654321", 25, "UK", new Suscripciones(TIPO.DUO, CUOTA.ANUAL));
+		listaUsuarios[2] = new Usuarios("user3", "password3", "Bob", "Johnson", "bob.johnson@example.com", "1357924680", 40, "Canada", new Suscripciones(TIPO.FAMILIAR, CUOTA.MENSUAL));
 		Autores[] listaAutores = new Autores[100];
+		listaAutores[0] = new Autores(1, "J.K. Rowling", "British author, best known for writing the Harry Potter fantasy series.");
+		listaAutores[1] = new Autores(2, "George R.R. Martin", "American novelist and short story writer, best known for his series of epic fantasy novels A Song of Ice and Fire.");
+		listaAutores[2] = new Autores(3, "Stephen King", "American author of horror, supernatural fiction, suspense, crime, science-fiction, and fantasy novels.");
 		Publicaciones[] listaPublicaciones=new Publicaciones[100];
+		listaPublicaciones[0]= new Comics(1, "Harry Potter and the Philosopher's Stone", listaAutores[0], "First book in the Harry Potter series.", "Bloomsbury Publishing", 223, GENERO.CC_Y_FANTASIA, Comics.COLOR.NO);
+		listaPublicaciones[1] = new Ebooks(2, "A Game of Thrones",listaAutores[1], "First book in the A Song of Ice and Fire series.", "Bantam Spectra", 694, GENERO.CC_Y_FANTASIA, "9780553573404");
+		listaPublicaciones[2] = new Ebooks(3, "Entertainment Weekly",listaAutores[2], "American magazine covering film, television, music, theater, books, and popular culture.", "Meredith Corporation", 112, GENERO.NOVELACOMTEPORANEA,"123");
+		Reseñas[] listaReseñas=new Reseñas[10];
+		listaReseñas[0] = new Reseñas(listaPublicaciones[0], listaUsuarios[0], "Una obra maestra, ¡me encantó!", 5);
+		listaReseñas[1] = new Reseñas(listaPublicaciones[1], listaUsuarios[1], "Interesante historia, pero un poco lenta al principio.", 4);
+		listaReseñas[2] = new Reseñas(listaPublicaciones[2], listaUsuarios[2], "No me gustó mucho, esperaba más.", 3);
+		listaReseñas[3] = new Reseñas(listaPublicaciones[0], listaUsuarios[2], "Increíble, definitivamente lo recomendaría a todos.", 5);
+		listaReseñas[4] = new Reseñas(listaPublicaciones[1], listaUsuarios[0], "Una historia fascinante, no podía dejar de leer.", 5);
+		listaReseñas[5] = new Reseñas(listaPublicaciones[2], listaUsuarios[1], "Me pareció aburrido y predecible.", 2);
+		listaReseñas[6] = new Reseñas(listaPublicaciones[0], listaUsuarios[2], "Buen libro, pero un poco sobrevalorado en mi opinión.", 4);
+		listaReseñas[7] = new Reseñas(listaPublicaciones[1], listaUsuarios[2], "Me encantó, lo leería de nuevo.", 5);
+		listaReseñas[8] = new Reseñas(listaPublicaciones[2], listaUsuarios[0], "No fue lo que esperaba, algo decepcionante.", 3);
+		listaReseñas[9] = new Reseñas(listaPublicaciones[0], listaUsuarios[1], "Lo disfruté mucho, lo recomendaría a cualquier fanático de la fantasía.", 5);
+
 
 		int eleccion;
 		do {
@@ -211,10 +237,10 @@ public class APP {
 						        if (listaPublicaciones[i] != null && listaPublicaciones[i].getISBN() == isbnBorrar) {
 						            if (listaPublicaciones[i] instanceof Comics) {
 						                listaPublicaciones[i] = ((Comics) listaPublicaciones[i]).BorrarPublicacion(listaPublicaciones[i], listaPublicaciones);
-						                modificado = true;
+						                Borrar = true;
 						            } else {
 						            	 listaPublicaciones[i] = ((Ebooks) listaPublicaciones[i]).BorrarPublicacion(listaPublicaciones[i], listaPublicaciones);
-							                modificado = true;
+						            	 Borrar = true;
 						            }
 						        }
 						    }
@@ -242,7 +268,55 @@ public class APP {
 
 				break;
 			case 4:
+				int eleccionUsu;
+				do {
+					eleccionUsu=menuUsuario();
+					
+					switch(eleccionUsu){
+					
+					case 1:
+						boolean creado = false;
+					for(int i=0;i<listaReseñas.length && !creado;i++) {
+						if(listaReseñas[i]==null) {
+							Reseñas reseña=new Reseñas();
+							listaReseñas[i]=reseña.CrearRESENNA(listaPublicaciones, listaUsuarios);
+							creado=true;
+						}
+					}
+						
+					break;
+					case 2:
+						Reseñas reseña=new Reseñas();
+						reseña.BorrarReseñas(listaReseñas);
+						
+					break;
+					case 3:
+						Reseñas listarreseña=new Reseñas();
+						listarreseña.ListarReseñas(listaReseñas);
+					break;
+					case 4:
+						Arrays.sort(listaReseñas);
+						for ( Reseñas reseñas : listaReseñas) {
+							System.out.println(reseñas);
+						}
+					break;
+					case 5:
+						Arrays.sort(listaReseñas, Reseñas.PuntuacionComparator); 
 
+				        for (Reseñas reseñas : listaReseñas) {
+				            System.out.println(reseñas);
+				        }
+					break;
+					case 6:
+						System.out.println("Introduzca el isbn del libro");
+						Reseñas reseñas = new Reseñas();
+						int isbn=sc.nextInt();
+						double puntuacionMedia =reseñas.calcularPuntuacionMediaPorISBN( isbn, listaReseñas);
+						System.out.println(puntuacionMedia);
+					break;
+					}
+				}
+				while(eleccionUsu!=8);
 				break;
 			case 5:
 				System.out.println("Saliendo del programa");
@@ -254,6 +328,8 @@ public class APP {
 		} while (eleccion != 5);
 	}
 
+
+
 	public static int menu() {
 		var sc = new Scanner(System.in);
 		int eleccion;
@@ -261,7 +337,7 @@ public class APP {
 		System.out.println("1.CRUD USUARIOS");
 		System.out.println("2.CRUD AUTORES");
 		System.out.println("3.CRUD PUBLICACIONES");
-		System.out.println("4.OPCIONES");
+		System.out.println("4.OPCIONES USUARIOS");
 		System.out.println("5.Salir");
 		System.out.println("------------------");
 		System.out.println("Introduce una opción: ");
@@ -308,6 +384,22 @@ public class APP {
 		System.out.println("3.BORRAR PUBLICACION");
 		System.out.println("4.LISTAR PUBLICACIONES");
 		System.out.println("5.Salir");
+		System.out.println("------------------");
+		System.out.println("Introduce una opción: ");
+		eleccion = sc.nextInt();
+		return eleccion;
+	}
+	
+	public static int menuUsuario() {
+		var sc = new Scanner(System.in);
+		int eleccion;
+		System.out.println("------------------");
+		System.out.println("1.HACER RESEÑA");
+		System.out.println("2.BORRAR RESEÑA");
+		System.out.println("3.LISTAR TODAS LAS RESEÑAS");
+		System.out.println("4.LISTAR DE PEOR A MEJOR RESEÑA");
+		System.out.println("5.LISTAR DE MEJOR A PEOR RESEÑA");
+		System.out.println("6.PUNTUNACION MEDIA SEGUN PUBLICACION");
 		System.out.println("------------------");
 		System.out.println("Introduce una opción: ");
 		eleccion = sc.nextInt();
