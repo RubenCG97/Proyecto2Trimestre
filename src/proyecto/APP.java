@@ -2,6 +2,7 @@
 package proyecto;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import proyecto.Publicaciones.GENERO;
@@ -25,17 +26,17 @@ public class APP {
 		listaPublicaciones[0]= new Comics(1, "Harry Potter and the Philosopher's Stone", listaAutores[0], "First book in the Harry Potter series.", "Bloomsbury Publishing", 223, GENERO.CC_Y_FANTASIA, Comics.COLOR.NO);
 		listaPublicaciones[1] = new Ebooks(2, "A Game of Thrones",listaAutores[1], "First book in the A Song of Ice and Fire series.", "Bantam Spectra", 694, GENERO.CC_Y_FANTASIA, "9780553573404");
 		listaPublicaciones[2] = new Ebooks(3, "Entertainment Weekly",listaAutores[2], "American magazine covering film, television, music, theater, books, and popular culture.", "Meredith Corporation", 112, GENERO.NOVELACOMTEPORANEA,"123");
-		Reseñas[] listaReseñas=new Reseñas[10];
-		listaReseñas[0] = new Reseñas(listaPublicaciones[0], listaUsuarios[0], "Una obra maestra, ¡me encantó!", 5);
-		listaReseñas[1] = new Reseñas(listaPublicaciones[1], listaUsuarios[1], "Interesante historia, pero un poco lenta al principio.", 4);
-		listaReseñas[2] = new Reseñas(listaPublicaciones[2], listaUsuarios[2], "No me gustó mucho, esperaba más.", 3);
-		listaReseñas[3] = new Reseñas(listaPublicaciones[0], listaUsuarios[2], "Increíble, definitivamente lo recomendaría a todos.", 5);
-		listaReseñas[4] = new Reseñas(listaPublicaciones[1], listaUsuarios[0], "Una historia fascinante, no podía dejar de leer.", 5);
-		listaReseñas[5] = new Reseñas(listaPublicaciones[2], listaUsuarios[1], "Me pareció aburrido y predecible.", 2);
-		listaReseñas[6] = new Reseñas(listaPublicaciones[0], listaUsuarios[2], "Buen libro, pero un poco sobrevalorado en mi opinión.", 4);
-		listaReseñas[7] = new Reseñas(listaPublicaciones[1], listaUsuarios[2], "Me encantó, lo leería de nuevo.", 5);
-		listaReseñas[8] = new Reseñas(listaPublicaciones[2], listaUsuarios[0], "No fue lo que esperaba, algo decepcionante.", 3);
-		listaReseñas[9] = new Reseñas(listaPublicaciones[0], listaUsuarios[1], "Lo disfruté mucho, lo recomendaría a cualquier fanático de la fantasía.", 5);
+		Resenas[] listaResenas=new Resenas[10];
+		listaResenas[0] = new Resenas(listaPublicaciones[0], listaUsuarios[0], "Una obra maestra, ¡me encantó!", 5);
+		listaResenas[1] = new Resenas(listaPublicaciones[1], listaUsuarios[1], "Interesante historia, pero un poco lenta al principio.", 4);
+		listaResenas[2] = new Resenas(listaPublicaciones[2], listaUsuarios[2], "No me gustó mucho, esperaba más.", 3);
+		listaResenas[3] = new Resenas(listaPublicaciones[0], listaUsuarios[2], "Increíble, definitivamente lo recomendaría a todos.", 5);
+		listaResenas[4] = new Resenas(listaPublicaciones[1], listaUsuarios[0], "Una historia fascinante, no podía dejar de leer.", 5);
+		listaResenas[5] = new Resenas(listaPublicaciones[2], listaUsuarios[1], "Me pareció aburrido y predecible.", 2);
+		listaResenas[6] = new Resenas(listaPublicaciones[0], listaUsuarios[2], "Buen libro, pero un poco sobrevalorado en mi opinión.", 4);
+		listaResenas[7] = new Resenas(listaPublicaciones[1], listaUsuarios[2], "Me encantó, lo leería de nuevo.", 5);
+		listaResenas[8] = new Resenas(listaPublicaciones[2], listaUsuarios[0], "No fue lo que esperaba, algo decepcionante.", 3);
+		listaResenas[9] = new Resenas(listaPublicaciones[0], listaUsuarios[1], "Lo disfruté mucho, lo recomendaría a cualquier fanático de la fantasía.", 5);
 
 
 		int eleccion;
@@ -276,42 +277,42 @@ public class APP {
 					
 					case 1:
 						boolean creado = false;
-					for(int i=0;i<listaReseñas.length && !creado;i++) {
-						if(listaReseñas[i]==null) {
-							Reseñas reseña=new Reseñas();
-							listaReseñas[i]=reseña.CrearRESENNA(listaPublicaciones, listaUsuarios);
+					for(int i=0;i<listaResenas.length && !creado;i++) {
+						if(listaResenas[i]==null) {
+							Resenas resena=new Resenas();
+							listaResenas[i]=resena.CrearRESENNA(listaPublicaciones, listaUsuarios);
 							creado=true;
 						}
 					}
 						
 					break;
 					case 2:
-						Reseñas reseña=new Reseñas();
-						reseña.BorrarReseñas(listaReseñas);
+						Resenas resena=new Resenas();
+						resena.BorrarResenas(listaResenas);
 						
 					break;
 					case 3:
-						Reseñas listarreseña=new Reseñas();
-						listarreseña.ListarReseñas(listaReseñas);
+						Resenas listarresena=new Resenas();
+						listarresena.ListarResenas(listaResenas);
 					break;
 					case 4:
-						Arrays.sort(listaReseñas);
-						for ( Reseñas reseñas : listaReseñas) {
-							System.out.println(reseñas);
+						Arrays.sort(listaResenas);
+						for ( Resenas resenas : listaResenas) {
+							System.out.println(resenas);
 						}
 					break;
 					case 5:
-						Arrays.sort(listaReseñas, Reseñas.PuntuacionComparator); 
+						Arrays.sort(listaResenas, Resenas.PuntuacionComparator); 
 
-				        for (Reseñas reseñas : listaReseñas) {
-				            System.out.println(reseñas);
+				        for (Resenas resenas : listaResenas) {
+				            System.out.println(resenas);
 				        }
 					break;
 					case 6:
 						System.out.println("Introduzca el isbn del libro");
-						Reseñas reseñas = new Reseñas();
+						Resenas resenas = new Resenas();
 						int isbn=sc.nextInt();
-						double puntuacionMedia =reseñas.calcularPuntuacionMediaPorISBN( isbn, listaReseñas);
+						double puntuacionMedia =resenas.calcularPuntuacionMediaPorISBN( isbn, listaResenas);
 						System.out.println(puntuacionMedia);
 					break;
 					}
@@ -329,81 +330,155 @@ public class APP {
 	}
 
 
-
+	/**
+	 * Menu principal
+	 * @return el numero elegido del menu
+	 */
 	public static int menu() {
-		var sc = new Scanner(System.in);
-		int eleccion;
-		System.out.println("------------------");
-		System.out.println("1.CRUD USUARIOS");
-		System.out.println("2.CRUD AUTORES");
-		System.out.println("3.CRUD PUBLICACIONES");
-		System.out.println("4.OPCIONES USUARIOS");
-		System.out.println("5.Salir");
-		System.out.println("------------------");
-		System.out.println("Introduce una opción: ");
-		eleccion = sc.nextInt();
-		return eleccion;
-	}
+	    var sc = new Scanner(System.in);
+	    int eleccion = 0;
+	    boolean inputValido = false;
 
+	    do {
+	        try {
+	            System.out.println("------------------");
+	            System.out.println("1.CRUD USUARIOS");
+	            System.out.println("2.CRUD AUTORES");
+	            System.out.println("3.CRUD PUBLICACIONES");
+	            System.out.println("4.OPCIONES USUARIOS");
+	            System.out.println("5.Salir");
+	            System.out.println("------------------");
+	            System.out.println("Introduce una opción: ");
+	            eleccion = sc.nextInt();
+	            inputValido = true;
+	        } catch (InputMismatchException e) {
+	            System.out.println("Error: Debes introducir un número entero.");
+	            sc.nextLine(); // Limpiar el buffer del scanner
+	        }
+	    } while (!inputValido);
+
+	    return eleccion;
+	}
+	/**
+	 * Menu de usuario
+	 * @return el numero elegido del menu
+	 */
 	public static int menuCRUDUsuarios() {
-		var sc = new Scanner(System.in);
-		int eleccion;
-		System.out.println("------------------");
-		System.out.println("1.CREAR USUARIO");
-		System.out.println("2.MODIFICAR USUARIOS");
-		System.out.println("3.BORRAR USUARIOS");
-		System.out.println("4.LISTAR USUARIOS");
-		System.out.println("5.Salir");
-		System.out.println("------------------");
-		System.out.println("Introduce una opcion: ");
-		eleccion = sc.nextInt();
-		return eleccion;
-	}
+	    var sc = new Scanner(System.in);
+	    int eleccion = 0;
+	    boolean inputValido = false;
 
+	    do {
+	        try {
+	            System.out.println("------------------");
+	            System.out.println("1.CREAR USUARIO");
+	            System.out.println("2.MODIFICAR USUARIOS");
+	            System.out.println("3.BORRAR USUARIOS");
+	            System.out.println("4.LISTAR USUARIOS");
+	            System.out.println("5.Salir");
+	            System.out.println("------------------");
+	            System.out.println("Introduce una opción: ");
+	            eleccion = sc.nextInt();
+	            inputValido = true;
+	        } catch (InputMismatchException e) {
+	            System.out.println("Error: Debes introducir un número entero.");
+	            sc.nextLine(); 
+	        }
+	    } while (!inputValido);
+
+	    return eleccion;
+	}
+	/**
+	 * Menu de autores
+	 * @return el numero elegido del menu
+	 */
 	public static int menuCRUDAutores() {
-		var sc = new Scanner(System.in);
-		int eleccion;
-		System.out.println("------------------");
-		System.out.println("1.CREAR AUTOR");
-		System.out.println("2.MODIFICAR AUTOR");
-		System.out.println("3.BORRAR AUTOR");
-		System.out.println("4.LISTAR AUTORES");
-		System.out.println("5.Salir");
-		System.out.println("------------------");
-		System.out.println("Introduce una opción: ");
-		eleccion = sc.nextInt();
-		return eleccion;
+	    var sc = new Scanner(System.in);
+	    int eleccion = 0;
+	    boolean inputValido = false;
+
+	    do {
+	        try {
+	        	System.out.println("CRUD AUTORES");
+	            System.out.println("------------------");
+	            System.out.println("1.CREAR AUTOR");
+	            System.out.println("2.MODIFICAR AUTOR");
+	            System.out.println("3.BORRAR AUTOR");
+	            System.out.println("4.LISTAR AUTORES");
+	            System.out.println("5.Salir");
+	            System.out.println("------------------");
+	            System.out.println("Introduce una opción: ");
+	            eleccion = sc.nextInt();
+	            inputValido = true;
+	        } catch (InputMismatchException e) {
+	            System.out.println("Error: Debes introducir un número entero.");
+	            sc.nextLine(); // Limpiar el buffer del scanner
+	        }
+	    } while (!inputValido);
+
+	    return eleccion;
 	}
-	
+	/**
+	 * Menu de publicaciones
+	 * @return el numero elegido del menu
+	 */
 	public static int menuCrudPublicaciones() {
-		var sc = new Scanner(System.in);
-		int eleccion;
-		System.out.println("------------------");
-		System.out.println("1.CREAR PUBLICACION");
-		System.out.println("2.MODIFICAR PUBLICACION");
-		System.out.println("3.BORRAR PUBLICACION");
-		System.out.println("4.LISTAR PUBLICACIONES");
-		System.out.println("5.Salir");
-		System.out.println("------------------");
-		System.out.println("Introduce una opción: ");
-		eleccion = sc.nextInt();
-		return eleccion;
+	    var sc = new Scanner(System.in);
+	    int eleccion = 0;
+	    boolean inputValido = false;
+
+	    do {
+	        try {
+	        	System.out.println("CRUD PUBLICACIONES");
+	            System.out.println("------------------");
+	            System.out.println("1.CREAR PUBLICACION");
+	            System.out.println("2.MODIFICAR PUBLICACION");
+	            System.out.println("3.BORRAR PUBLICACION");
+	            System.out.println("4.LISTAR PUBLICACIONES");
+	            System.out.println("5.SALIR");
+	            System.out.println("------------------");
+	            System.out.println("Introduce una opción: ");
+	            eleccion = sc.nextInt();
+	            inputValido = true;
+	        } catch (InputMismatchException e) {
+	            System.out.println("Error: Debes introducir un número entero.");
+	            sc.nextLine(); // Limpiar el buffer del scanner
+	        }
+	    } while (!inputValido);
+
+	    return eleccion;
 	}
-	
+	/**
+	 * Menu de usuarios
+	 * @return el numero del menu
+	 */
 	public static int menuUsuario() {
-		var sc = new Scanner(System.in);
-		int eleccion;
-		System.out.println("------------------");
-		System.out.println("1.HACER RESEÑA");
-		System.out.println("2.BORRAR RESEÑA");
-		System.out.println("3.LISTAR TODAS LAS RESEÑAS");
-		System.out.println("4.LISTAR DE PEOR A MEJOR RESEÑA");
-		System.out.println("5.LISTAR DE MEJOR A PEOR RESEÑA");
-		System.out.println("6.PUNTUNACION MEDIA SEGUN PUBLICACION");
-		System.out.println("------------------");
-		System.out.println("Introduce una opción: ");
-		eleccion = sc.nextInt();
-		return eleccion;
+	    var sc = new Scanner(System.in);
+	    int eleccion = 0;
+	    boolean inputValido = false;
+
+	    do {
+	        try {
+	        	System.out.println("MENU USUARIO");
+	            System.out.println("------------------");
+	            System.out.println("1.HACER RESEnA");
+	            System.out.println("2.BORRAR RESEnA");
+	            System.out.println("3.LISTAR TODAS LAS RESEnAS");
+	            System.out.println("4.LISTAR DE PEOR A MEJOR RESEnA");
+	            System.out.println("5.LISTAR DE MEJOR A PEOR RESEnA");
+	            System.out.println("6.PUNTUNACION MEDIA SEGUN PUBLICACION");
+	            System.out.println("7.SALIR");
+	            System.out.println("------------------");
+	            System.out.println("Introduce una opción: ");
+	            eleccion = sc.nextInt();
+	            inputValido = true;
+	        } catch (InputMismatchException e) {
+	            System.out.println("Error: Debes introducir un número entero.");
+	            sc.nextLine(); 
+	        }
+	    } while (!inputValido);
+
+	    return eleccion;
 	}
 
 }

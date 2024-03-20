@@ -1,36 +1,68 @@
 package proyecto;
 import java.util.Scanner;
-
+/**
+ * @author ruben
+ * Herencia de clase abstracta
+ */
 public class Ebooks extends Publicaciones {
 
-	protected String formatoEbook;
+    /** El formato del eBook. */
+    protected String formatoEbook;
 
-	public Ebooks() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Constructor predeterminado de la clase Ebooks.
+     * Inicializa todos los campos en sus valores predeterminados.
+     */
+    public Ebooks() {
+        super();
+    }
 
-	public Ebooks(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
-			GENERO genero,String formatoEbook) {
-		super(iSBN, titulo, autor, descripcion, editorial, numPag, genero);
-		this.formatoEbook=formatoEbook;
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Constructor parametrizado de la clase Ebooks.
+     * @param iSBN El ISBN del eBook.
+     * @param titulo El título del eBook.
+     * @param autor El autor del eBook.
+     * @param descripcion La descripción del eBook.
+     * @param editorial La editorial del eBook.
+     * @param numPag El número de páginas del eBook.
+     * @param genero El género del eBook.
+     * @param formatoEbook El formato del eBook.
+     */
+    public Ebooks(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
+            GENERO genero, String formatoEbook) {
+        super(iSBN, titulo, autor, descripcion, editorial, numPag, genero);
+        this.formatoEbook = formatoEbook;
+    }
 
-	public String getFormatoEbook() {
-		return formatoEbook;
-	}
+    /**
+     * Obtiene el formato del eBook.
+     * @return El formato del eBook.
+     */
+    public String getFormatoEbook() {
+        return formatoEbook;
+    }
 
-	public void setFormatoEbook(String formatoEbook) {
-		this.formatoEbook = formatoEbook;
-	}
+    /**
+     * Establece el formato del eBook.
+     * @param formatoEbook El nuevo formato del eBook.
+     */
+    public void setFormatoEbook(String formatoEbook) {
+        this.formatoEbook = formatoEbook;
+    }
+
+    /**
+     * Mustra la informacion del ebook
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return super.toString() + "ebook [formatoEbook=" + formatoEbook + "]";
+    }
 
 	@Override
-	public String toString() {
-		return super.toString() + "ebook [formatoEbook=" + formatoEbook + "]";
-	}
-
-	@Override
+	/**
+	 * {@inheritDoc}
+	 */
 	public Ebooks CrearPublicacion(Publicaciones[] listaPublicaciones, Autores[] listaAutores) {
 		var sc=new Scanner(System.in);
 		Ebooks ebook=new Ebooks();
@@ -147,7 +179,13 @@ public class Ebooks extends Publicaciones {
 		
 		return ebook;
 	}
-
+	/**
+	 * {@inheritDoc}
+	 * @param ebook
+	 * @param listaPublicaciones
+	 * @param listaAutores
+	 * @return
+	 */
 	public Ebooks ModificarPublicacion(Ebooks ebook, Publicaciones[] listaPublicaciones, Autores[] listaAutores) {
 	    var sc = new Scanner(System.in);
 
@@ -268,7 +306,12 @@ public class Ebooks extends Publicaciones {
 
 	    return ebook;
 	}
-	
+	/**
+	 * {@inheritDoc}
+	 * @param ebook
+	 * @param listaPublicaciones
+	 * @return
+	 */
 	public Ebooks BorrarPublicacion(Ebooks ebook, Publicaciones[] listaPublicaciones) {
 
 		ebook = null;
@@ -276,6 +319,13 @@ public class Ebooks extends Publicaciones {
 		return ebook;
 
 	}
+	/**
+	 * Metodo privado
+     * Comprueba si un ISBN dado ya existe en la lista de publicaciones.
+     * @param isbn El ISBN a comprobar.
+     * @param listaPublicaciones La lista de publicaciones.
+     * @return true si el ISBN ya existe, false de lo contrario.
+     */
 	private boolean ComprobarISBN(int isbn, Publicaciones[] listaPublicaciones) {
 
 		boolean encontrado = false;

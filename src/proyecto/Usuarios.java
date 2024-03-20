@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 import proyecto.Suscripciones.CUOTA;
 import proyecto.Suscripciones.TIPO;
-
+/**
+ * @author Ruben
+ */
 public class Usuarios {
-
+	//Atributos de las clases del usuario
 	private String nickname;
 	private String contrasenna;
 	private String nombre;
@@ -17,9 +19,24 @@ public class Usuarios {
 	private String nacionalidad;
 	private Suscripciones suscripcion;
 
+	// Constructores
+    /**
+     * Constructor vacío de Usuarios.
+     */
 	public Usuarios() {
 	}
-
+	/**
+     * Constructor parametrizado de Usuarios.
+     * @param nickname El nombre de usuario.
+     * @param contrasenna La contraseña del usuario.
+     * @param nombre El nombre del usuario.
+     * @param apellido El apellido del usuario.
+     * @param gmail El correo electrónico del usuario.
+     * @param cuentaBancaria La cuenta bancaria del usuario.
+     * @param edad La edad del usuario.
+     * @param nacionalidad La nacionalidad del usuario.
+     * @param suscripcion La suscripción del usuario.
+     */
 	public Usuarios(String nickname, String contrasenna, String nombre, String apellido, String gmail,
 			String cuentaBancaria, int edad, String nacionalidad, Suscripciones suscripcion) {
 		this.nickname = nickname;
@@ -32,86 +49,152 @@ public class Usuarios {
 		this.nacionalidad = nacionalidad;
 		this.suscripcion = suscripcion;
 	}
-
+	//Metodos públicos
+	/**
+	 * Metodo para obtener el nickname del usuario
+	 * @return el nickname del usuario
+	 */
 	public String getNickname() {
 		return nickname;
 	}
-
+	/**
+	 * Metodo para establecer el nickname del usuario
+	 * @param nickname el nickname del usuario
+	 */
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	/**
+	 * Metodo para obtener la contraseña
+	 * @return	la contraseña del usuario
+	 */
 
 	public String getContrasenna() {
 		return contrasenna;
 	}
+	/**
+	 * Metodo para establecer la contraseña del usuario
+	 * @param la contraseña del usuario
+	 */
 
 	public void setContrasenna(String contrasenna) {
 		this.contrasenna = contrasenna;
 	}
+	/**
+	 * Metodo para obtener el nombre del usuario
+	 * @return el nombre del usuario
+	 */
 
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Metodo para establecer el nombre del usuario
+	 * @param el nombre del usuario
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/**
+	 * Metodo para obtener el apellido del usuario
+	 * @return el apellido del usuario
+	 */
 	public String getApellido() {
 		return apellido;
 	}
-
+	/**
+	 * Metodo para establecer el apellido del usuario
+	 * @param el apellido del usuario
+	 */
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
+	/**
+	 * Metodo para obtener el gmail del usuario
+	 * @return el gmail del usuario
+	 */
 	public String getGmail() {
 		return gmail;
 	}
-
+	/**
+	 * Metodo para establecer el gmail del usuario
+	 * @param el gmail del usuario
+	 */
 	public void setGmail(String gmail) {
 		this.gmail = gmail;
 	}
-
+	/**
+	 * Metodo para obtener la cuenta bancaria del usuario
+	 * @return la cuenta bancaria del usuario
+	 */
 	public String getCuentaBancaria() {
 		return cuentaBancaria;
 	}
-
+	/**
+	 * Metodo para establecer la cuenta bancaria del usuario
+	 * @param la cuentaBancaria del usuario
+	 */
 	public void setCuentaBancaria(String cuentaBancaria) {
 		this.cuentaBancaria = cuentaBancaria;
 	}
-
+	/**
+	 * Metodo para obtener la edad del usuario
+	 * @return la edad del usuario
+	 */
 	public int getEdad() {
 		return edad;
 	}
-
+	/**
+	 * Metodo para establecer la edad del usuario
+	 * @param la edad del usuario
+	 */
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
 
+	/**
+	 * Metodo para obtener la nacionalidad del usuario
+	 * @return la nacionalidad del usuario
+	 */
 	public String getNacionalidad() {
 		return nacionalidad;
 	}
-
+	/**
+	 * Metodo para establecer la nacionalidad del usuario
+	 * @param la nacionalidad del usuario
+	 */
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-
+	/**
+	 * Metodo para obtener la suscripcion del usuario
+	 * @return la suscripcion del usuario
+	 */
 	public Suscripciones getSuscripcion() {
 		return suscripcion;
 	}
-
+	/**
+	 * Metodo para establecer la suscripcion del usuario
+	 * @param la suscripcion del usuario
+	 */
 	public void setSuscripcion(Suscripciones suscripcion) {
 		this.suscripcion = suscripcion;
 	}
-
+	
 	@Override
+	/**
+	 * Metodo para mostrar la informacion del usuario
+	 */
 	public String toString() {
 		return "Usuarios [nickname=" + nickname + ", contrasenna=" + contrasenna + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", gmail=" + gmail + ", cuentaBancaria=" + cuentaBancaria + ", edad=" + edad
 				+ ", nacionalidad=" + nacionalidad + ", suscripcion=" + suscripcion + "]";
 	}
-
+	/**
+	 * Metodo para crear el usuario
+	 * @param Se le pasa como parametra un array de la lista de usuarios 
+	 * @return devuelve una instancia de usuario y se guarda en la lista de usuarios
+	 */
 	public Usuarios CrearUsuario(Usuarios[] listaUsuarios) {
 		var sc = new Scanner(System.in);
 
@@ -174,7 +257,12 @@ public class Usuarios {
 		return usuario;
 
 	}
-
+	/**
+	 * Metodo para modificar atributos del usuario
+	 * @param usuario
+	 * @param listaUsuario
+	 * @return devuelve el usuario actualizado
+	 */
 	public Usuarios ModificarUsuario(Usuarios usuario, Usuarios[] listaUsuario) {
 		var sc = new Scanner(System.in);
 
@@ -272,14 +360,22 @@ public class Usuarios {
 		return usuario;
 
 	}
-
+	/**
+	 * Metodo para borrar usuario
+	 * @param usuario
+	 * @param listaUsuarios
+	 * @return devuelve el usuario vacio
+	 */
 	public Usuarios BorrarUsuario(Usuarios usuario, Usuarios[] listaUsuarios) {
 
 		usuario = null;
 		return usuario;
 
 	}
-
+	/**
+	 * Metodo para mostrar todos los usuarios creados
+	 * @param listaUsuarios
+	 */
 	public void ListarUsuarios(Usuarios[] listaUsuarios) {
 		int contador = 0;
 		for (int i = 0; i < listaUsuarios.length; i++) {
@@ -292,7 +388,12 @@ public class Usuarios {
 			System.out.println("No hay usuarios");
 		}
 	}
-
+	/**
+	 * Metodo privado para asegurar que el nickname es unico
+	 * @param nickname
+	 * @param listaUsuarios
+	 * @return boolean
+	 */
 	private boolean ComprobarNickname(String nickname, Usuarios[] listaUsuarios) {
 
 		boolean encontrado = false;
@@ -320,7 +421,10 @@ public class Usuarios {
 			return false;
 		}
 	}
-
+	/**
+	 * Metodo privado para crear suscripcion
+	 * @return la suscripcion escogida
+	 */
 	private Suscripciones crearSuscripcion() {
 		var sc = new Scanner(System.in);
 

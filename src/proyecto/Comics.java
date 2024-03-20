@@ -1,42 +1,70 @@
 package proyecto;
 
 import java.util.Scanner;
-
-
-
+/**
+ * @author ruben
+ */
 public class Comics extends Publicaciones {
 
-	enum COLOR {
-		SI, NO
-	}
+    /** Enumeración que indica si el cómic está en color o no. */
+    enum COLOR {
+        SI, NO
+    }
 
-	protected COLOR color;
+    /** El color del cómic. */
+    protected COLOR color;
 
-	public Comics() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Constructor predeterminado de la clase Comics.
+     * Inicializa todos los campos en sus valores predeterminados.
+     */
+    public Comics() {
+        super();
+    }
 
-	public Comics(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
-			GENERO genero,COLOR color) {
-		super(iSBN, titulo, autor, descripcion, editorial, numPag, genero);
-		this.color=color;
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Constructor parametrizado de la clase Comics.
+     * @param iSBN El ISBN del cómic.
+     * @param titulo El título del cómic.
+     * @param autor El autor del cómic.
+     * @param descripcion La descripción del cómic.
+     * @param editorial La editorial del cómic.
+     * @param numPag El número de páginas del cómic.
+     * @param genero El género del cómic.
+     * @param color El color del cómic.
+     */
+    public Comics(int iSBN, String titulo, Autores autor, String descripcion, String editorial, int numPag,
+            GENERO genero, COLOR color) {
+        super(iSBN, titulo, autor, descripcion, editorial, numPag, genero);
+        this.color = color;
+    }
 
-	public COLOR getColor() {
-		return color;
-	}
+    /**
+     * Obtiene el color del cómic.
+     * @return El color del cómic.
+     */
+    public COLOR getColor() {
+        return color;
+    }
 
-	public void setColor(COLOR color) {
-		this.color = color;
-	}
+    /**
+     * Establece el color del cómic.
+     * @param color El nuevo color del cómic.
+     */
+    public void setColor(COLOR color) {
+        this.color = color;
+    }
 
-	@Override
-	public String toString() {
-		return super.toString() + "Comics [color=" + color + "]";
-	}
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return super.toString() + "Comics [color=" + color + "]";
+    }
+    /**
+     * {@inheritDoc}
+     */
 	public Comics CrearPublicacion(Publicaciones[] listaPublicaciones, Autores[] listaAutores) {
 		var sc=new Scanner(System.in);
 		Comics comic=new Comics();
@@ -175,7 +203,9 @@ public class Comics extends Publicaciones {
 
 		return comic;
 	}
-	
+	/**
+     * {@inheritDoc}
+     */
 	public Comics ModificarPublicacion(Publicaciones listaPublicaciones, Autores[] listaAutores, Publicaciones[] listaPublicaciones2) {
 	    var sc = new Scanner(System.in);
 
@@ -303,7 +333,9 @@ public class Comics extends Publicaciones {
 
 	    return (Comics) listaPublicaciones;
 	}
-	
+	/**
+     * {@inheritDoc}
+     */
 	public Comics BorrarPublicacion(Comics comic, Publicaciones[] listaPublicaciones) {
 
 		comic = null;
@@ -311,7 +343,13 @@ public class Comics extends Publicaciones {
 		return comic;
 
 	}
-	
+	/**
+	 * Metodo privado
+     * Comprueba si un ISBN dado ya existe en la lista de publicaciones.
+     * @param isbn El ISBN a comprobar.
+     * @param listaPublicaciones La lista de publicaciones.
+     * @return true si el ISBN ya existe, false de lo contrario.
+     */
 	private boolean ComprobarISBN(int isbn, Publicaciones[] listaPublicaciones) {
 
 		boolean encontrado = false;
